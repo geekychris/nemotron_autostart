@@ -1,0 +1,29 @@
+[Unit]
+Description=Nemotron-3 Nano 30B llama.cpp server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=chris
+Group=chris
+WorkingDirectory=/home/chris/code/llama.cpp/build/bin
+ExecStart=/home/chris/code/llama.cpp/build/bin/llama-server \
+    --model /home/chris/models/nemotron3-gguf/Nemotron-3-Nano-30B-A3B-UD-Q8_K_XL.gguf \
+    --host 192.168.1.227 \
+    --port 30000 \
+    --n-gpu-layers 99 \
+    --ctx-size 1000000 \
+    --threads 10
+
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=600
+LimitNOFILE=1048576
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=nemotron
+
+[Install]
+WantedBy=multi-user.target

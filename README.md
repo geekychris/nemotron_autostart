@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="Nemotron Autostart logo" width="180">
+</p>
+
 # nemotron-autostart
 
 Systemd unit and install/uninstall scripts that run
